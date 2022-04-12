@@ -28,10 +28,7 @@
     {
         "name": "ERC-721",
         "symbol": "ERC-721",
-        "totalSupply": 1000000,
-        "decimals": 18,
-        "owner": "0x0000000000000000000000000000000000000000",
-        "tokenURI": "http://host:port/erc721/tokenURI"
+        "owner": "0x0000000000000000000000000000000000000000"
     }
     ```
 * 출력
