@@ -8,7 +8,10 @@ const Web3 = require('web3');
 
 const ByteCode = JSON.parse(fs.readFileSync('./contracts/ByteCode','utf-8'));
 const ABI = JSON.parse(fs.readFileSync('./contracts/ABI', 'utf-8'));
+const abi = ABI;
+const byteCode = ByteCode;
 
+Contract.setProvider('http://127.0.0.1:7545');
 
 
 
@@ -19,20 +22,18 @@ app.get('/', (req, res) => {
 	res.send(Web3.utils.toHex('Hello'));
 });
 
+let CA, hash;
 
 app.post('/erc721/deploy', (req, res) => {
     name_ = req.body.name;
     symbol_ = req.body.symbol;
     owner_ = req.body.owner;
-    hash = "0x0";
     CA = "0x0";
+    hash = "0x0";
     async function deploy(name_, symbol_, owner_) {
-        const abi = ABI;
-        const byteCode = ByteCode;
 
-        Contract.setProvider('http://127.0.0.1:7545');
         const contract = new Contract(abi);
-        contract.deploy({
+        const rep = await contract.deploy({
             data:"0x" + byteCode, 
             arguments: [name_, symbol_]
         })
@@ -47,8 +48,17 @@ app.post('/erc721/deploy', (req, res) => {
         })
     }
     deploy(name_, symbol_, owner_)
-    
+});
 
+app.get('/erc721/balanceOf/:owner', (req, res) =>{
+    owner = req.params.owner;
+    async function ownerOf(owner_){
+        const contract = new Contract(abi, CA);
+        const result = await contract.methods.balanceOf(owner_).call();
+        res.status(200).json({"balance": result});
+    }
+
+    ownerOf(owner);
 })
 
 app.listen(port, () => {
