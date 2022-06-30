@@ -1,3 +1,4 @@
+//알파벳 대문자로만 입력만 받기"
 package main
 
 import (
@@ -7,10 +8,9 @@ import (
 )
 
 func main() {
-	str := "ReDsUn"
+	str := "REDBEEN"
 
-	upper := strings.ToUpper(str)
-	splited := strings.Split(upper,"")
+	splited := strings.Split(str, "")
 	sort.Strings(splited)
-	fmt.Println(strings.Join(splited,""))
+	fmt.Println(strings.Join(splited, ""))
 }
