@@ -66,7 +66,7 @@
 
    * 입력 조건
        ```http
-       GET http://host:port/erc721/balanceOf/:owner
+       GET http://host:port/:contractAddress/erc721/balanceOf/:owner
        ```
    * 출력 조건
 
