@@ -14,7 +14,7 @@ function isUpperCase(input) {
 function compare_abc(input) {
   const abc = input;
   const myRegExp = /^[A-Z]+$/;
-  return myRegExp.test(abc)
+  return myRegExp(abc)
 };
 
 console.log("대문자로만 문자열 입력가능");
@@ -29,7 +29,7 @@ if(str != isUpperCase(str)){
 }else if(compare_abc(str) === true){
   var Split = str.split('');
 Split.sort();
-console.log("입력내용 알파벳순 정렬해서 출력: "+ Split.join(''));
+console.log("입력내용 알파벳순으로 정렬해서 출력: "+ Split.join(''));
 }
 else{
   console.log("숫자,특수문자 입력불가");
