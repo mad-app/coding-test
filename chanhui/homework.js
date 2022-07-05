@@ -14,7 +14,7 @@ function checkStr(str) {
 
 function sortStr(str) {
   //아스키 코드를 활용한 정렬 함수 구현
-  const alphabatnum = Array.from({ length: 30 }, (v, i) => 0); //해당 문자의 인덱스를 담기 위한 변수
+  const alphabatnum = Array.from({ length: 26 }, (v, i) => 0); //해당 문자의 인덱스를 담기 위한 변수
   const alphabat = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //해당 인덱스에 해당하는 알파벳
   for (let i = 0; i < str.length; i++) {
     const a = "A";
