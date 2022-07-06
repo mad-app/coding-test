@@ -3,11 +3,11 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
-console.log("영문자를 입력해주세요")
+console.log("영대문자를 입력해주세요")
 rl.on("line", (line) => {
     let arr=[]
     let str=""
-   
+  
     for(let i = 0;i<line.length;i++){
         arr.push(line.charCodeAt(i));  //아스키 코드로 변환
     }
@@ -15,12 +15,12 @@ rl.on("line", (line) => {
 		if (arr[i] < 65 || arr[i] > 90 ){
 			console.log("대문자를 입력해주세요.")
             process.exit();
-		}
+		}   
 	}
     arr.sort(function(a, b)  {  //오름차순 정렬
         return a - b;
     });
-    for(let i=0;i<line.length;i++){
+    for(let i=0;i<arr.length;i++){
        str+=String.fromCharCode(arr[i])   //아스키 코드 -> 문자로 변환
     }
     console.log(str)
